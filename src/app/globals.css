@@ -1,26 +1,169 @@
 @import "tailwindcss";
 
+/* Dynamic brand system using HSL channels so we can reuse the same hue
+   for light/dark modes and generate accessible variants. */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand hue and saturation (kept stable for identity) */
+  --brand-h: 226;
+  --brand-s: 85%;
+
+  /* Light mode lightness scales (HSL) */
+  --brand-l-strong: 55%;
+  --brand-l: 60%;
+  --brand-l-soft: 96%;
+  --brand-l-softer: 98%;
+
+  /* Semantic colors (HSL channels only – use with hsl(var(--color-*))) */
+  --color-primary: var(--brand-h) var(--brand-s) var(--brand-l);
+  --color-primary-strong: var(--brand-h) var(--brand-s) var(--brand-l-strong);
+  --color-primary-soft: var(--brand-h) 100% var(--brand-l-soft);
+  --color-primary-softer: var(--brand-h) 100% var(--brand-l-softer);
+
+  --color-surface: 210 40% 99%;
+  --color-surface-elevated: 222 40% 98%;
+  --color-surface-glass: 222 40% 16%;
+
+  --color-border-subtle: 215 20% 92%;
+  --color-border-strong: 222 36% 75%;
+
+  --color-foreground-strong: 222 47% 11%;
+  --color-foreground-soft: 215 16% 47%;
+
+  --color-success: 151 81% 36%;
+  --color-warning: 43 96% 56%;
+  --color-error: 0 84% 60%;
+
+  --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.16);
+
+  --background-app: radial-gradient(circle at top left, #020617, #020617);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: hsl(210 40% 98%);
+  --color-foreground: hsl(var(--color-foreground-strong));
+  --color-accent: hsl(var(--color-primary));
+  --color-accent-soft: hsl(var(--color-primary-soft));
+  --color-success: hsl(var(--color-success));
+  --color-warning: hsl(var(--color-warning));
+  --color-error: hsl(var(--color-error));
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Slightly adjust lightness for dark mode so contrast stays WCAG‑AA */
+    --brand-l-strong: 60%;
+    --brand-l: 65%;
+    --brand-l-soft: 20%;
+    --brand-l-softer: 14%;
+
+    --color-surface: 222 47% 8%;
+    --color-surface-elevated: 222 47% 10%;
+    --color-surface-glass: 222 47% 16%;
+
+    --color-border-subtle: 215 25% 24%;
+    --color-border-strong: 222 36% 55%;
+
+    --color-foreground-strong: 220 13% 95%;
+    --color-foreground-soft: 215 16% 68%;
+
+    --background-app: radial-gradient(circle at top left, #020617, #000000);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background-app);
+  color: hsl(var(--color-foreground-strong));
+  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "SF Pro Text", "Segoe UI", sans-serif;
+}
+
+main {
+  background:
+    radial-gradient(circle at top left, hsla(var(--color-primary-strong) / 0.16), transparent 55%),
+    radial-gradient(circle at bottom right, hsla(210 40% 96% / 0.85), hsl(var(--color-surface)));
+}
+
+/* Reusable “design system” utilities */
+
+.app-shell {
+  backdrop-filter: blur(32px);
+  background-color: hsla(var(--color-surface-glass) / 0.72);
+}
+
+.surface-card {
+  background-color: hsla(var(--color-surface-elevated) / 0.85);
+  border-color: hsla(var(--color-border-subtle) / 1);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+}
+
+.surface-card-ghost {
+  background: linear-gradient(
+      135deg,
+      hsla(var(--color-primary-soft) / 0.6),
+      hsla(var(--color-primary-softer) / 0.18)
+    );
+  border-color: hsla(var(--color-border-subtle) / 0.8);
+  backdrop-filter: blur(20px);
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--color-primary-strong)),
+    hsl(var(--color-primary))
+  );
+  color: white;
+  box-shadow: 0 18px 30px rgba(37, 99, 235, 0.45);
+  transition:
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out,
+    background 180ms ease-out,
+    filter 120ms ease-out;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 22px 40px rgba(37, 99, 235, 0.6);
+  filter: saturate(1.1);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid hsl(var(--color-primary));
+  outline-offset: 3px;
+}
+
+.pill-soft {
+  background-color: hsla(var(--color-primary-soft) / 0.7);
+  color: hsl(var(--color-primary-strong));
+}
+
+.pill-soft-muted {
+  background-color: hsla(var(--color-primary-softer) / 0.9);
+  color: hsl(var(--color-foreground-soft));
+}
+
+.card-zoom {
+  transition:
+    transform 160ms ease-out,
+    box-shadow 160ms ease-out,
+    border-color 160ms ease-out,
+    background 180ms ease-out;
+}
+
+.card-zoom:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 45px rgba(15, 23, 42, 0.16);
+  border-color: hsla(var(--color-primary) / 0.4);
+}
+
+/* Ensure large headings stay readable on mixed gradients */
+.heading-strong {
+  text-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.9),
+    0 0 24px rgba(15, 23, 42, 0.7);
 }
