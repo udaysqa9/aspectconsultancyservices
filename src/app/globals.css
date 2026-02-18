@@ -36,7 +36,12 @@
 
   --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.16);
 
-  --background-app: radial-gradient(circle at top left, #020617, #020617);
+  --background-app: #0f172a;
+}
+
+/* Always use dark canvas for this site so light text remains readable */
+html {
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -77,15 +82,15 @@ body {
   min-height: 100vh;
   margin: 0;
   background: var(--background-app);
-  color: hsl(var(--color-foreground-strong));
+  color: #e2e8f0;
   font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
     "SF Pro Text", "Segoe UI", sans-serif;
 }
 
 main {
   background:
-    radial-gradient(circle at top left, hsla(var(--color-primary-strong) / 0.16), transparent 55%),
-    radial-gradient(circle at bottom right, hsla(210 40% 96% / 0.85), hsl(var(--color-surface)));
+    radial-gradient(circle at top left, hsla(var(--color-primary-strong) / 0.18), transparent 50%),
+    radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.97), #0f172a);
 }
 
 /* Reusable “design system” utilities */
@@ -166,4 +171,18 @@ main {
   text-shadow:
     0 1px 2px rgba(15, 23, 42, 0.9),
     0 0 24px rgba(15, 23, 42, 0.7);
+}
+
+/* Partner logo marquee — logos move left to right (infinite scroll) */
+@keyframes partner-marquee {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.partner-marquee-track {
+  animation: partner-marquee 120s linear infinite;
 }

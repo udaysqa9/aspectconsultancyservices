@@ -37,32 +37,32 @@ export default function WorkPage() {
       </section>
 
       <section className="grid gap-4 md:grid-cols-2">
-        <article className="space-y-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-xs text-slate-100 shadow-[0_18px_40px_rgba(15,23,42,0.7)] backdrop-blur-xl">
+        <article className="space-y-3 rounded-2xl border border-slate-700 bg-slate-900/95 p-4 text-xs text-slate-100 shadow-[0_18px_40px_rgba(15,23,42,0.7)]">
           <div className="flex items-center justify-between gap-2">
             <h2 className="text-sm font-semibold text-slate-50">
               Aligning roadmap with strategy
             </h2>
-            <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] text-slate-200">
+            <span className="rounded-full bg-slate-700/90 px-2 py-0.5 text-[10px] text-slate-100">
               B2B SaaS
             </span>
           </div>
-          <p className="text-slate-300">
+          <p className="text-slate-200">
             Partnered with product and engineering leadership to reshape a
             roadmap around a clearer narrative, tightening focus to a smaller
             set of high‑leverage initiatives.
           </p>
         </article>
 
-        <article className="space-y-3 rounded-2xl border border-white/15 bg-white/5 p-4 text-xs text-slate-100 shadow-[0_18px_40px_rgba(15,23,42,0.7)] backdrop-blur-xl">
+        <article className="space-y-3 rounded-2xl border border-slate-700 bg-slate-900/95 p-4 text-xs text-slate-100 shadow-[0_18px_40px_rgba(15,23,42,0.7)]">
           <div className="flex items-center justify-between gap-2">
             <h2 className="text-sm font-semibold text-slate-50">
               Modernising critical internal tooling
             </h2>
-            <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] text-slate-200">
+            <span className="rounded-full bg-slate-700/90 px-2 py-0.5 text-[10px] text-slate-100">
               Operations
             </span>
           </div>
-          <p className="text-slate-300">
+          <p className="text-slate-200">
             Helped an operations team redesign workflows and architecture for a
             core internal platform, improving reliability while reducing cycle
             time for new features.
