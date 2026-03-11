@@ -1,188 +1,194 @@
 @import "tailwindcss";
 
-/* Dynamic brand system using HSL channels so we can reuse the same hue
-   for light/dark modes and generate accessible variants. */
-
+/* Design system — futuristic tech consulting */
 :root {
-  /* Brand hue and saturation (kept stable for identity) */
-  --brand-h: 226;
-  --brand-s: 85%;
+  /* Colors */
+  --color-primary: #6366f1;
+  --color-accent: #22c55e;
+  --color-dark: #0f172a;
+  --color-card: #111827;
+  --color-text: #e5e7eb;
+  --color-text-secondary: #9ca3af;
 
-  /* Light mode lightness scales (HSL) */
-  --brand-l-strong: 55%;
-  --brand-l: 60%;
-  --brand-l-soft: 96%;
-  --brand-l-softer: 98%;
+  /* Spacing (8px rule) */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-6: 48px;
+  --space-8: 64px;
 
-  /* Semantic colors (HSL channels only – use with hsl(var(--color-*))) */
-  --color-primary: var(--brand-h) var(--brand-s) var(--brand-l);
-  --color-primary-strong: var(--brand-h) var(--brand-s) var(--brand-l-strong);
-  --color-primary-soft: var(--brand-h) 100% var(--brand-l-soft);
-  --color-primary-softer: var(--brand-h) 100% var(--brand-l-softer);
+  /* Typography — set by next/font in layout (Space_Grotesk, Inter) */
 
-  --color-surface: 210 40% 99%;
-  --color-surface-elevated: 222 40% 98%;
-  --color-surface-glass: 222 40% 16%;
+  --text-hero: 48px;
+  --text-section: 32px;
+  --text-subheading: 20px;
+  --text-body: 16px;
+  --text-button: 14px;
 
-  --color-border-subtle: 215 20% 92%;
-  --color-border-strong: 222 36% 75%;
-
-  --color-foreground-strong: 222 47% 11%;
-  --color-foreground-soft: 215 16% 47%;
-
-  --color-success: 151 81% 36%;
-  --color-warning: 43 96% 56%;
-  --color-error: 0 84% 60%;
-
-  --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.16);
-
-  --background-app: #0f172a;
-}
-
-/* Always use dark canvas for this site so light text remains readable */
-html {
-  color-scheme: dark;
+  --radius: 16px;
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.2);
 }
 
 @theme inline {
-  --color-background: hsl(210 40% 98%);
-  --color-foreground: hsl(var(--color-foreground-strong));
-  --color-accent: hsl(var(--color-primary));
-  --color-accent-soft: hsl(var(--color-primary-soft));
-  --color-success: hsl(var(--color-success));
-  --color-warning: hsl(var(--color-warning));
-  --color-error: hsl(var(--color-error));
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: var(--color-dark);
+  --color-foreground: var(--color-text);
+  --font-sans: var(--font-body);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Slightly adjust lightness for dark mode so contrast stays WCAG‑AA */
-    --brand-l-strong: 60%;
-    --brand-l: 65%;
-    --brand-l-soft: 20%;
-    --brand-l-softer: 14%;
-
-    --color-surface: 222 47% 8%;
-    --color-surface-elevated: 222 47% 10%;
-    --color-surface-glass: 222 47% 16%;
-
-    --color-border-subtle: 215 25% 24%;
-    --color-border-strong: 222 36% 55%;
-
-    --color-foreground-strong: 220 13% 95%;
-    --color-foreground-soft: 215 16% 68%;
-
-    --background-app: radial-gradient(circle at top left, #020617, #000000);
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background: var(--background-app);
-  color: #e2e8f0;
-  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont,
-    "SF Pro Text", "Segoe UI", sans-serif;
+  background: var(--color-dark);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-main {
-  background:
-    radial-gradient(circle at top left, hsla(var(--color-primary-strong) / 0.18), transparent 50%),
-    radial-gradient(circle at bottom right, rgba(15, 23, 42, 0.97), #0f172a);
+/* Headings use Space Grotesk */
+h1, h2, h3, .font-heading {
+  font-family: var(--font-heading);
 }
 
-/* Reusable “design system” utilities */
-
-.app-shell {
-  backdrop-filter: blur(32px);
-  background-color: hsla(var(--color-surface-glass) / 0.72);
+/* Glass card */
+.glass-card {
+  background: rgba(17, 24, 39, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
 }
 
-.surface-card {
-  background-color: hsla(var(--color-surface-elevated) / 0.85);
-  border-color: hsla(var(--color-border-subtle) / 1);
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.surface-card-ghost {
-  background: linear-gradient(
-      135deg,
-      hsla(var(--color-primary-soft) / 0.6),
-      hsla(var(--color-primary-softer) / 0.18)
-    );
-  border-color: hsla(var(--color-border-subtle) / 0.8);
-  backdrop-filter: blur(20px);
+/* Service / page cards — 18px radius, glass */
+.service-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 24px;
+  transition: all 0.25s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.btn-primary {
-  background: linear-gradient(
-    135deg,
-    hsl(var(--color-primary-strong)),
-    hsl(var(--color-primary))
-  );
+/* Tag pill */
+.tag-pill {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(99, 102, 241, 0.15);
+  color: #6366f1;
+}
+
+/* Button primary with glow */
+.btn-glow {
+  background: linear-gradient(135deg, var(--color-primary), #818cf8);
   color: white;
-  box-shadow: 0 18px 30px rgba(37, 99, 235, 0.45);
-  transition:
-    transform 160ms ease-out,
-    box-shadow 160ms ease-out,
-    background 180ms ease-out,
-    filter 120ms ease-out;
+  font-weight: 500;
+  font-size: var(--text-button);
+  padding: 12px 24px;
+  border-radius: 12px;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
 }
-
-.btn-primary:hover {
+.btn-glow:hover {
+  box-shadow: 0 0 32px rgba(99, 102, 241, 0.5);
   transform: translateY(-1px);
-  box-shadow: 0 22px 40px rgba(37, 99, 235, 0.6);
-  filter: saturate(1.1);
 }
 
-.btn-primary:focus-visible {
-  outline: 2px solid hsl(var(--color-primary));
-  outline-offset: 3px;
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.pill-soft {
-  background-color: hsla(var(--color-primary-soft) / 0.7);
-  color: hsl(var(--color-primary-strong));
+/* Animated gradient bg */
+.gradient-bg {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(34, 197, 94, 0.05));
 }
 
-.pill-soft-muted {
-  background-color: hsla(var(--color-primary-softer) / 0.9);
-  color: hsl(var(--color-foreground-soft));
+/* Motion grid background */
+.motion-grid {
+  background-image:
+    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
-.card-zoom {
-  transition:
-    transform 160ms ease-out,
-    box-shadow 160ms ease-out,
-    border-color 160ms ease-out,
-    background 180ms ease-out;
-}
-
-.card-zoom:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 24px 45px rgba(15, 23, 42, 0.16);
-  border-color: hsla(var(--color-primary) / 0.4);
-}
-
-/* Ensure large headings stay readable on mixed gradients */
-.heading-strong {
-  text-shadow:
-    0 1px 2px rgba(15, 23, 42, 0.9),
-    0 0 24px rgba(15, 23, 42, 0.7);
-}
-
-/* Partner logo marquee — logos move left to right (infinite scroll) */
-@keyframes partner-marquee {
+/* Partners marquee — infinite horizontal scroll */
+@keyframes marquee {
   0% {
-    transform: translateX(-50%);
-  }
-  100% {
     transform: translateX(0);
   }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
-.partner-marquee-track {
-  animation: partner-marquee 120s linear infinite;
+.marquee-wrap {
+  display: flex;
+  width: max-content;
+  animation: marquee 80s linear infinite;
+}
+
+.marquee-wrap:hover {
+  animation-play-state: paused;
+}
+
+/* Our Wings cards — futuristic hover + entrance */
+@keyframes wing-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wing-card {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  animation: wing-enter 0.6s ease-out both;
+}
+.wing-card:hover {
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35), 0 0 40px rgba(99, 102, 241, 0.08);
+}
+
+/* Course detail expanded content — subtle entrance */
+@keyframes course-detail-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.course-detail-entrance {
+  animation: course-detail-enter 0.3s ease-out;
 }

@@ -36,167 +36,235 @@ const socialLinks = [
 
 export default function ChitrasanthePage() {
   return (
-    <div className="space-y-12">
-      <section className="space-y-4 rounded-3xl border border-slate-800 bg-slate-950/85 p-6 shadow-[0_24px_60px_rgba(15,23,42,0.9)]">
-        <div className="flex items-center gap-3">
-          <div className="relative h-14 w-32">
-            <Image src="/partners/chitrasanthe.png" alt="Chitrasanthe" fill className="object-contain object-left" />
-          </div>
-          <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Cinema | Culture | Celebration</span>
-        </div>
-        <h1 className="heading-strong text-balance text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl">
-          Chitrasanthe — Film Magazine & Podcast
-        </h1>
-        <p className="max-w-2xl text-sm leading-6 text-slate-300 sm:text-base sm:leading-7">
-          Chitrasanthe is the Kannada Premium Cine Magazine. 10,000+ circulation across Karnataka (monthly). We feature inspiring achievers, business owners and entrepreneurs on our podcast — we&apos;d love to have you on the show and share your journey with our audience.
-        </p>
-        <ul className="space-y-2 text-sm text-slate-300">
-          <li>• Unique editorial sections and attractive layout with extensive photographic work.</li>
-          <li>• Print & paper quality among the best in the industry.</li>
-          <li>• Awarded the Best Print Layout & Design for Karnataka by the Press Association, Bangalore.</li>
-          <li>• Wide expertise in the Media & Film Fraternity; promoting films and providing the right platform, visibility and branding for a grand success.</li>
-        </ul>
-        <div className="flex flex-wrap items-center gap-3 pt-2">
-          <span className="text-xs font-medium text-slate-400">📍 {SITE_ADDRESS}</span>
-          {socialLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-500 bg-slate-800/90 px-3 py-1.5 text-xs font-medium text-slate-100 transition-colors hover:border-[hsl(var(--color-primary))] hover:text-white"
-            >
-              {link.icon} {link.label}
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* Magazine & Awards — professional image section */}
-      <section className="space-y-6">
-        <h2 className="text-lg font-semibold tracking-tight text-slate-50 sm:text-xl">
-          Magazine & Awards
-        </h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/95 shadow-[0_18px_40px_rgba(15,23,42,0.6)]">
-            <Image
-              src="/chitrasanthe/magazine-covers.png"
-              alt="Chitrasanthe magazine covers — The Panorama of Kannada Cinema"
-              width={800}
-              height={600}
-              className="h-64 w-full object-cover object-top sm:h-72"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent px-4 py-3">
-              <p className="text-xs font-medium text-slate-200">Magazine covers</p>
+    <div className="min-h-screen bg-[#0F172A]">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-white/5 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div
+          className="absolute inset-0 opacity-40"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(34,197,94,0.06) 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-0 opacity-60"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px)
+            `,
+            backgroundSize: "48px 48px",
+          }}
+        />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="relative h-16 w-36 shrink-0">
+                <Image
+                  src="/partners/chitrasanthe.png"
+                  alt="Chitrasanthe"
+                  fill
+                  className="object-contain object-left"
+                />
+              </div>
+              <span className="text-xs font-medium uppercase tracking-widest text-[#6366F1]">
+                Cinema | Culture | Celebration
+              </span>
             </div>
-          </div>
-          <div className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/95 shadow-[0_18px_40px_rgba(15,23,42,0.6)]">
-            <Image
-              src="/chitrasanthe/puraskaar-award.png"
-              alt="Chitrasanthe Puraskaar award"
-              width={800}
-              height={600}
-              className="h-64 w-full object-cover object-center sm:h-72"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent px-4 py-3">
-              <p className="text-xs font-medium text-slate-200">Chitrasanthe Puraskaar</p>
-            </div>
-          </div>
-          <div className="relative overflow-hidden rounded-2xl border border-slate-700 bg-slate-900/95 shadow-[0_18px_40px_rgba(15,23,42,0.6)] sm:col-span-2 lg:col-span-1">
-            <Image
-              src="/chitrasanthe/magazine-collage.png"
-              alt="Chitrasanthe magazine collection"
-              width={800}
-              height={600}
-              className="h-64 w-full object-cover object-center sm:h-72"
-            />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950/90 to-transparent px-4 py-3">
-              <p className="text-xs font-medium text-slate-200">Kannada cinema panorama</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Tariff: Commercial AD Space (Print) */}
-      <section className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/90">
-        <div className="border-b border-slate-600 bg-slate-800/90 px-4 py-3 sm:px-6">
-          <h2 className="text-base font-semibold text-slate-50 sm:text-lg">
-            Tariff rates — Commercial AD space (Print)
-          </h2>
-          <p className="mt-1 text-xs text-slate-300">Rates in INR. Quarterly, Half Yearly, Yearly.</p>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px] text-left text-sm">
-            <thead>
-              <tr className="border-b border-slate-600 bg-slate-800/80">
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Sl No</th>
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">AD Type</th>
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Quarterly</th>
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Half Yearly</th>
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Yearly</th>
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Full Year</th>
-              </tr>
-            </thead>
-            <tbody className="text-slate-200">
-              {printTariff.map((row) => (
-                <tr key={row.sl} className="border-b border-slate-700/80 hover:bg-slate-800/60">
-                  <td className="px-3 py-2.5 sm:px-4">{row.sl}</td>
-                  <td className="px-3 py-2.5 font-medium text-slate-100 sm:px-4">{row.type}</td>
-                  <td className="px-3 py-2.5 sm:px-4">{row.q}</td>
-                  <td className="px-3 py-2.5 sm:px-4">{row.h}</td>
-                  <td className="px-3 py-2.5 sm:px-4">{row.y}</td>
-                  <td className="px-3 py-2.5 sm:px-4">{row.full}</td>
-                </tr>
+            <div className="flex flex-wrap gap-2">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-[#E5E7EB] transition-colors hover:border-[#6366F1]/50 hover:bg-[#6366F1]/10 touch-manipulation"
+                >
+                  {link.icon} {link.label}
+                </a>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
+          <h1 className="mt-10 font-heading text-4xl font-semibold tracking-tight text-[#E5E7EB] sm:text-[48px] lg:text-[56px]">
+            Chitrasanthe — Film Magazine & Podcast
+          </h1>
+          <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-[#9CA3AF] sm:text-base">
+            Kannada Premium Cine Magazine. 10,000+ circulation across Karnataka (monthly). We
+            feature inspiring achievers, business owners and entrepreneurs on our podcast — we&apos;d
+            love to have you on the show and share your journey with our audience.
+          </p>
+          <ul className="mt-6 space-y-2 text-[15px] leading-relaxed text-[#9CA3AF] sm:text-base">
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6366F1]" />
+              Unique editorial sections and attractive layout with extensive photographic work.
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6366F1]" />
+              Print & paper quality among the best in the industry.
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6366F1]" />
+              Awarded Best Print Layout & Design for Karnataka by the Press Association, Bangalore.
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#6366F1]" />
+              Wide expertise in Media & Film Fraternity; promoting films and providing the right
+              platform, visibility and branding for grand success.
+            </li>
+          </ul>
+          <p className="mt-4 text-sm text-[#9CA3AF]">📍 {SITE_ADDRESS}</p>
         </div>
       </section>
 
-      {/* Tariff: Online AD Space */}
-      <section className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/90">
-        <div className="border-b border-slate-600 bg-slate-800/90 px-4 py-3 sm:px-6">
-          <h2 className="text-base font-semibold text-slate-50 sm:text-lg">
-            Online AD space tariff — Chitrasanthe
+      {/* Magazine & Awards */}
+      <section className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="font-heading text-2xl font-semibold text-[#E5E7EB] sm:text-[32px]">
+            Magazine & Awards
           </h2>
-          <p className="mt-1 text-xs text-slate-300">Dimensions in px. Monthly, Quarterly, Yearly (INR).</p>
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[560px] text-left text-sm">
-            <thead>
-              <tr className="border-b border-slate-600 bg-slate-800/80">
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Sl no</th>
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Dimensions</th>
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Position</th>
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Monthly</th>
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Quarterly</th>
-                <th className="px-3 py-2.5 font-semibold text-slate-100 sm:px-4">Yearly</th>
-              </tr>
-            </thead>
-            <tbody className="text-slate-200">
-              {onlineTariff.map((row) => (
-                <tr key={row.sl} className="border-b border-slate-700/80 hover:bg-slate-800/60">
-                  <td className="px-3 py-2.5 sm:px-4">{row.sl}</td>
-                  <td className="px-3 py-2.5 sm:px-4">{row.dim}</td>
-                  <td className="px-3 py-2.5 font-medium text-slate-100 sm:px-4">{row.pos}</td>
-                  <td className="px-3 py-2.5 sm:px-4">{row.m}</td>
-                  <td className="px-3 py-2.5 sm:px-4">{row.q}</td>
-                  <td className="px-3 py-2.5 sm:px-4">{row.y}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <p className="mt-2 text-[15px] text-[#9CA3AF]">
+            The panorama of Kannada cinema — print excellence and recognition.
+          </p>
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="group relative overflow-hidden rounded-[18px] border border-white/10 bg-[rgba(255,255,255,0.03)] shadow-[0_4px_24px_rgba(0,0,0,0.25)] backdrop-blur-[10px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
+              <Image
+                src="/chitrasanthe/magazine-covers.png"
+                alt="Chitrasanthe magazine covers — The Panorama of Kannada Cinema"
+                width={800}
+                height={600}
+                className="h-64 w-full object-cover object-top sm:h-72"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0F172A]/95 to-transparent px-5 py-4">
+                <p className="text-sm font-medium text-[#E5E7EB]">Magazine covers</p>
+              </div>
+            </div>
+            <div className="group relative overflow-hidden rounded-[18px] border border-white/10 bg-[rgba(255,255,255,0.03)] shadow-[0_4px_24px_rgba(0,0,0,0.25)] backdrop-blur-[10px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)]">
+              <Image
+                src="/chitrasanthe/puraskaar-award.png"
+                alt="Chitrasanthe Puraskaar award"
+                width={800}
+                height={600}
+                className="h-64 w-full object-cover object-center sm:h-72"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0F172A]/95 to-transparent px-5 py-4">
+                <p className="text-sm font-medium text-[#E5E7EB]">Chitrasanthe Puraskaar</p>
+              </div>
+            </div>
+            <div className="group relative overflow-hidden rounded-[18px] border border-white/10 bg-[rgba(255,255,255,0.03)] shadow-[0_4px_24px_rgba(0,0,0,0.25)] backdrop-blur-[10px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.35)] sm:col-span-2 lg:col-span-1">
+              <Image
+                src="/chitrasanthe/magazine-collage.png"
+                alt="Chitrasanthe magazine collection"
+                width={800}
+                height={600}
+                className="h-64 w-full object-cover object-center sm:h-72"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0F172A]/95 to-transparent px-5 py-4">
+                <p className="text-sm font-medium text-[#E5E7EB]">Kannada cinema panorama</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <div className="flex justify-center">
-        <Link
-          href="/contact"
-          className="btn-primary inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-medium"
-        >
-          Enquire for ad space
-        </Link>
-      </div>
+      {/* Tariff: Print */}
+      <section className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="overflow-hidden rounded-[18px] border border-white/10 bg-[rgba(255,255,255,0.03)] backdrop-blur-[10px] shadow-[0_4px_24px_rgba(0,0,0,0.25)]">
+            <div className="border-b border-white/10 bg-white/5 px-6 py-4 sm:px-8">
+              <h2 className="font-heading text-xl font-semibold text-[#E5E7EB] sm:text-2xl">
+                Tariff — Commercial AD space (Print)
+              </h2>
+              <p className="mt-1 text-sm text-[#9CA3AF]">Rates in INR. Quarterly, Half Yearly, Yearly.</p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[640px] text-left text-sm">
+                <thead>
+                  <tr className="border-b border-white/10 bg-white/5">
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Sl No</th>
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">AD Type</th>
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Quarterly</th>
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Half Yearly</th>
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Yearly</th>
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Full Year</th>
+                  </tr>
+                </thead>
+                <tbody className="text-[#9CA3AF]">
+                  {printTariff.map((row) => (
+                    <tr
+                      key={row.sl}
+                      className="border-b border-white/5 transition-colors hover:bg-white/5"
+                    >
+                      <td className="px-4 py-3 sm:px-6">{row.sl}</td>
+                      <td className="px-4 py-3 font-medium text-[#E5E7EB] sm:px-6">{row.type}</td>
+                      <td className="px-4 py-3 sm:px-6">{row.q}</td>
+                      <td className="px-4 py-3 sm:px-6">{row.h}</td>
+                      <td className="px-4 py-3 sm:px-6">{row.y}</td>
+                      <td className="px-4 py-3 sm:px-6">{row.full}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tariff: Online */}
+      <section className="border-b border-white/5 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="overflow-hidden rounded-[18px] border border-white/10 bg-[rgba(255,255,255,0.03)] backdrop-blur-[10px] shadow-[0_4px_24px_rgba(0,0,0,0.25)]">
+            <div className="border-b border-white/10 bg-white/5 px-6 py-4 sm:px-8">
+              <h2 className="font-heading text-xl font-semibold text-[#E5E7EB] sm:text-2xl">
+                Online AD space tariff — Chitrasanthe
+              </h2>
+              <p className="mt-1 text-sm text-[#9CA3AF]">
+                Dimensions in px. Monthly, Quarterly, Yearly (INR).
+              </p>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[560px] text-left text-sm">
+                <thead>
+                  <tr className="border-b border-white/10 bg-white/5">
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Sl no</th>
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Dimensions</th>
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Position</th>
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Monthly</th>
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Quarterly</th>
+                    <th className="px-4 py-3 font-semibold text-[#E5E7EB] sm:px-6">Yearly</th>
+                  </tr>
+                </thead>
+                <tbody className="text-[#9CA3AF]">
+                  {onlineTariff.map((row) => (
+                    <tr
+                      key={row.sl}
+                      className="border-b border-white/5 transition-colors hover:bg-white/5"
+                    >
+                      <td className="px-4 py-3 sm:px-6">{row.sl}</td>
+                      <td className="px-4 py-3 sm:px-6">{row.dim}</td>
+                      <td className="px-4 py-3 font-medium text-[#E5E7EB] sm:px-6">{row.pos}</td>
+                      <td className="px-4 py-3 sm:px-6">{row.m}</td>
+                      <td className="px-4 py-3 sm:px-6">{row.q}</td>
+                      <td className="px-4 py-3 sm:px-6">{row.y}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl text-center">
+          <Link
+            href="/contact"
+            className="btn-glow inline-flex items-center justify-center rounded-xl px-8 py-3.5 text-sm font-medium"
+          >
+            Enquire for ad space
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
